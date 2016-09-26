@@ -1,0 +1,17 @@
+[
+  {
+    "id": 0,
+    "title": "Sword",
+    "damage": 100
+  },
+  {  
+    "id": 1,
+    "title": "Axe",
+    "damage": 200
+  }, 
+  {
+    "id": 2,
+    "title": "Hammer",
+    "damage": 300
+  }
+]
