@@ -7,3 +7,4 @@
 7) MAKE IT STREAM ASSETS FORM ANDROID (ItemDatabase.cs) 
 8) Implement proper dammage calculation (Player.cs:DoDamage())
 9) How do deffence?
+10) Add sprite inporting for weapons/armor.

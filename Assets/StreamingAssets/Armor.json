@@ -1,0 +1,23 @@
+[
+  {
+    "id": 0,
+    "title": "Helmet",
+    "defense": 100, 
+	"bonusHP": 10,
+	"dexterity": 5
+  },
+  {  
+    "id": 1,
+    "title": "ChestThing",
+    "defense": 200, 
+	"bonusHP": 50,
+	"dexterity": 10
+  }, 
+  {
+	"id": 2,
+    "title": "LegShit",
+    "defense": 150, 
+	"bonusHP": 40,
+	"dexterity": 5
+  }
+]

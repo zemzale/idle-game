@@ -2,34 +2,24 @@
 
 public class Player : MonoBehaviour {
 
-
-    #region Stats
-    protected int maxHealth = 1000;
+    //ref to stat class
+    public PlayerStats stats;
     [SerializeField]
     protected int currentHealth;
-    
-    //Attack modifer and speed.
-    protected float attackMod = 1.2f;
-    public float attackSpeed = 0.5f;
-
-    //FOK DIS FOR NOW
-    protected float deffence;
-    protected float dexterity;
-    protected float accuracy;
-
-    protected int level;
-    protected int xp;
-
-    #endregion
 
     //If u dead then tru else fals. U know how dis goes.
     protected bool isDead = false;
 
-    //ref to current wep. and database too. 
-    [SerializeField]
-    private Weapon weapon;
+    //ref to database
     [SerializeField]
     private ItemDatabase database;
+
+    //ref to armor and wep.
+    [SerializeField]
+    private Armor armor;
+    [SerializeField]
+    public Weapon weapon;
+   
     //and healthbar ref.
     [SerializeField]
     protected RectTransform healthBar;
@@ -39,8 +29,9 @@ public class Player : MonoBehaviour {
     {
         //u want wep. dis should changed to number that is linked to ur player acc or smth.
         EquipWeapon(1);
+        EquipArmor(1);
         //Dis too should change later.
-        currentHealth = maxHealth;
+        currentHealth = stats.Health + armor.bonusHP;
         
         //if no healthbar u done goof. addd in inspector knub.
         if (healthBar == null)
@@ -52,14 +43,25 @@ public class Player : MonoBehaviour {
     //later for cases if u suck and die.
     protected void SetDefaults()
     {
-        currentHealth = maxHealth;
+        currentHealth = stats.Health;
         isDead = true;
     }
 
     //Called when u attack.
     public void Attack(Player obj)
     {
-        obj.TakeDamage(DoDamage());
+        float chance = 100 - ((0.1f * stats.Dexterity) + armor.dexterity) - Random.Range(0f, 10f) + ((0.1f * stats.Accuracy) + weapon.accuracy);
+        Debug.Log("Chance to hit : "  +  chance);
+
+        if (chance >  100)
+        {
+            obj.TakeDamage(DoDamage());
+        }
+        else
+        {
+            Debug.Log(transform.name + " missed!");
+        }
+        
     }
 
     //Method called when its time to attack.
@@ -67,7 +69,7 @@ public class Player : MonoBehaviour {
     public int DoDamage()
     {
         //TODO: Add calculation.
-        float dmg = weapon.damage * attackMod;
+        float dmg = weapon.damage * stats.modDamage;
 
         Debug.Log(transform.name + " attacked for " + dmg);
         return (int)dmg;
@@ -78,8 +80,11 @@ public class Player : MonoBehaviour {
     {
         if (!isDead)
         {
-            Debug.Log(transform.name + " took " + amount + " damage.");
+            Debug.Log(transform.name + " took " + amount + " damage befor armor applied.");
+            float armorNum  =  armor.defense * 0.75f * stats.modDefense;
+            amount -= (int)armorNum;
             currentHealth -= amount;
+            Debug.Log(transform.name + " took " + amount + " damage");
             SetHealthBar();
 
             //Check if health lower than 0 
@@ -105,7 +110,7 @@ public class Player : MonoBehaviour {
     private void SetHealthBar()
     {
         //Returns health in %%%%%%%%%%%%%% 
-        float barScale = ((currentHealth * 100) / maxHealth) * 0.01f;
+        float barScale = ((currentHealth * 100) / stats.Health) * 0.01f;
         if (barScale < 0)
             barScale = 0;
 
@@ -119,6 +124,13 @@ public class Player : MonoBehaviour {
     public void EquipWeapon(int _id)
     {
         weapon = database.FetchWeaponByID(_id);
+
+    }
+
+    //and same shit for armor
+    public void EquipArmor(int _id)
+    {
+        armor = database.FetchArmorByID(_id);
 
     }
 

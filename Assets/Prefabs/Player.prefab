@@ -40,13 +40,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ea6b9372c86e84497155c1ddfb4f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats:
+    modHealth: 1
+    modDefense: 1
+    modDamage: 1.2
+    modAttackSpeed: 2
+    modAccuracy: 1.2
+    modDexterity: 1.2
+    Level: 1
+    XP: 0
   currentHealth: 0
-  attackSpeed: 0.5
+  database: {fileID: 0}
+  armor:
+    ID: 0
+    name: 
+    defense: 0
+    bonusHP: 0
+    dexterity: 0
   weapon:
     ID: 0
     name: Sword
     damage: 100
-  database: {fileID: 0}
+    speed: 0
+    accuracy: 0
   healthBar: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:

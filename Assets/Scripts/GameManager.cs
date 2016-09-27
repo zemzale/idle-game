@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class GameManager : MonoBehaviour {
     
@@ -32,13 +31,13 @@ public class GameManager : MonoBehaviour {
         //do ze attaks. preaty simple.
         if (playerTimeToAttack < Time.time )
         {
-            playerTimeToAttack = Time.time + 1 / player.attackSpeed;
+            playerTimeToAttack = Time.time + 1 / (player.stats.AttackSpeed + player.weapon.speed) * player.stats.modAttackSpeed;
             player.Attack(enemy);
         }
 
         if (enemyTimeToAttcak < Time.time)
         {
-            enemyTimeToAttcak = Time.time + 1 / enemy.attackSpeed;
+            enemyTimeToAttcak = Time.time + 1 / (enemy.stats.AttackSpeed + enemy.weapon.speed) * enemy.stats.modAttackSpeed;
             enemy.Attack(player);
         }
     }
