@@ -2,3 +2,6 @@
 2) need "spawn" new enemys if they die.
 3) need to find how to implement ads
 4) ADD SOMETHING CUZ MEIN BREIN NO WORK.
+5) MAAD WEAPON GRAPHICHS BLYAT.
+6) MAYBE BETTER GUI PLACEMENT,
+7) MAKE IT STREAM ASSETS FORM ANDROID (ItemDatabase.cs) 
