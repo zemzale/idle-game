@@ -25,13 +25,14 @@ public class ItemDatabase : MonoBehaviour
 #if UNITY_EDITOR
         weaponData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/StreamingAssets/Weapons.json"));
         armorData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/StreamingAssets/Armor.json"));
+        PopulateDatabase();
 #elif UNITY_ANDROID
         string path1 = Application.streamingDataPath + "/Weapons.json";
         string path2 = Application.streamingDataPath + "/Armor.json";
         StartCoroutine(GetJsonData(path1, weaponData));
         StartCoroutine(GetJsonData(path2, armorData));
 #endif
-        PopulateDatabase();
+    
     }
 
     private IEnumerator GetJsonData (string jsonUrl, JsonData data)
@@ -44,11 +45,13 @@ public class ItemDatabase : MonoBehaviour
         {       
             Debug.Log("Writeing data : " + www.text + " to object!");   
             data = JsonMapper.ToObject(www.text);
+            PopulateDatabase();
         }
         else
         {
             Debug.LogError("Can't open file at location : " + path);
         }
+        
     }
 
     //Gives the weapon by id.
@@ -84,13 +87,19 @@ public class ItemDatabase : MonoBehaviour
     //U allready know.
     void PopulateDatabase()
     {
-        for (int i = 0; i < weaponData.Count; i++)
+        if(weaponData != null)
         {
-            weaponDatabes.Add(new Weapon((int)weaponData[i]["id"], weaponData[i]["title"].ToString(), (int)weaponData[i]["damage"], (int)weaponData[i]["speed"], (int)weaponData[i]["accuracy"]));
+            for (int i = 0; i < weaponData.Count; i++)
+                {
+                weaponDatabes.Add(new Weapon((int)weaponData[i]["id"], weaponData[i]["title"].ToString(), (int)weaponData[i]["damage"], (int)weaponData[i]["speed"], (int)weaponData[i]["accuracy"]));
+            }
         }
-        for (int i = 0; i < armorData.Count; i++)
+        if(armorData != null)
         {
-            armorDatabase.Add(new Armor((int)armorData[i]["id"], armorData[i]["title"].ToString(), (int)armorData[i]["defense"], (int)armorData[i]["bonusHP"], (int)armorData[i]["dexterity"]));
+            for (int i = 0; i < armorData.Count; i++)
+            {
+                armorDatabase.Add(new Armor((int)armorData[i]["id"], armorData[i]["title"].ToString(), (int)armorData[i]["defense"], (int)armorData[i]["bonusHP"], (int)armorData[i]["dexterity"]));
+            }
         }
     }
 }
