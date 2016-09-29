@@ -26,8 +26,8 @@ public class ItemDatabase : MonoBehaviour
         weaponData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/StreamingAssets/Weapons.json"));
         armorData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/StreamingAssets/Armor.json"));
 #elif UNITY_ANDROID
-        string path1 = "jar::file://" + Application.dataPath + "!/assets/Weapons.json";
-        string path2 = "jar::file://" + Application.dataPath + "!/assets/Armor.json";
+        string path1 = Application.streamingDataPath + "/Weapons.json";
+        string path2 = Application.streamingDataPath + "/Armor.json";
         StartCoroutine(GetJsonData(path1, weaponData));
         StartCoroutine(GetJsonData(path2, armorData));
 #endif
@@ -40,7 +40,15 @@ public class ItemDatabase : MonoBehaviour
 
         yield return www;
 
-        data = JsonMapper.ToObject(www.text);
+        if(String.EmptyOrNull(www.err))
+        {       
+            Debug.Log("Writeing data : " + www.text + " to object!");   
+            data = JsonMapper.ToObject(www.text);
+        }
+        else
+        {
+            Debug.LogError("Can't open file at location : " + path);
+        }
     }
 
     //Gives the weapon by id.
