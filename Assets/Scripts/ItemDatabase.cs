@@ -40,7 +40,7 @@ public class ItemDatabase : MonoBehaviour
 
         yield return www;
 
-        if(String.EmptyOrNull(www.err))
+        if(String.IsNullOrEmpty(www.err))
         {       
             Debug.Log("Writeing data : " + www.text + " to object!");   
             data = JsonMapper.ToObject(www.text);
