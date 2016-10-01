@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
@@ -11,13 +12,11 @@ public class Player : MonoBehaviour {
     protected bool isDead = false;
 
     //ref to database
-    [SerializeField]
-    private ItemDatabase database;
+    private DatabaseManager database;
 
     //ref to armor and wep.
     [SerializeField]
     private Armor armor;
-    [SerializeField]
     public Weapon weapon;
    
     //and healthbar ref.
@@ -25,11 +24,16 @@ public class Player : MonoBehaviour {
     protected RectTransform healthBar;
 
 
+
     void Start()
     {
+        database = DatabaseManager.singelton;
         //u want wep. dis should changed to number that is linked to ur player acc or smth.
+
         EquipWeapon(1);
         EquipArmor(1);
+
+
         //Dis too should change later.
         currentHealth = stats.Health + armor.bonusHP;
         

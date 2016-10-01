@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour {
-    
+
     //ref to player and enemy. might need to change name of class player
     //cuz makes no sense. lul.
-    public Player player;
-    public Player enemy;
+    private Player player;
+    private Player enemy;
 
     
 
@@ -14,11 +14,11 @@ public class GameManager : MonoBehaviour {
         //if null u done goof. check inspector.
         if (player == null)
         {
-            Debug.LogError("No player found!");
+            player = GameObject.Find("Player").GetComponent<Player>();            
         }
         if (enemy == null)
         {
-            Debug.LogError("No enemy found!");
+            enemy = GameObject.Find("Enemy").GetComponent<Player>();
         }
     }
 
@@ -28,17 +28,21 @@ public class GameManager : MonoBehaviour {
 
     void Update ()
     {
-        //do ze attaks. preaty simple.
-        if (playerTimeToAttack < Time.time )
-        {
-            playerTimeToAttack = Time.time + 1 / (player.stats.AttackSpeed + player.weapon.speed) * player.stats.modAttackSpeed;
-            player.Attack(enemy);
-        }
+        //if (player.stats !=  null && enemy.stats != null && player.weapon != null && enemy.weapon != null)
+        //{
+            //do ze attaks. preaty simple.
+            if (playerTimeToAttack < Time.time )
+            {
+                playerTimeToAttack = Time.time + 1 / (player.stats.AttackSpeed + player.weapon.speed) * player.stats.modAttackSpeed;
+                player.Attack(enemy);
+            }
 
-        if (enemyTimeToAttcak < Time.time)
-        {
-            enemyTimeToAttcak = Time.time + 1 / (enemy.stats.AttackSpeed + enemy.weapon.speed) * enemy.stats.modAttackSpeed;
-            enemy.Attack(player);
-        }
+            if (enemyTimeToAttcak < Time.time)
+            {
+                enemyTimeToAttcak = Time.time + 1 / (enemy.stats.AttackSpeed + enemy.weapon.speed) * enemy.stats.modAttackSpeed;
+                enemy.Attack(player);
+            }
+
+        //}
     }
 }

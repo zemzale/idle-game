@@ -1,10 +1,10 @@
-1) need make gui.
+1) need make gui. --- DONE
 2) need "spawn" new enemys if they die.
-3) need to find how to implement ads
+3) need to find how to implement ads --- LOOKED AT.
 4) ADD SOMETHING CUZ MEIN BREIN NO WORK.
-5) MAAD WEAPON GRAPHICHS BLYAT.
+5) MAAD WEAPON GRAPHICHS BLYAT.  
 6) MAYBE BETTER GUI PLACEMENT,
-7) MAKE IT STREAM ASSETS FORM ANDROID (ItemDatabase.cs) 
-8) Implement proper dammage calculation (Player.cs:DoDamage())
-9) How do deffence?
-10) Add sprite inporting for weapons/armor.
+7) MAKE IT STREAM ASSETS FORM ANDROID (ItemDatabase.cs) -- DONE 
+8) Implement proper dammage calculation (Player.cs:DoDamage()) -- DONE???
+9) How do deffence? -- I GUESS.
+10) Add sprite inporting for weapons/armor. (PRIORITY!!!!)
