@@ -1498,7 +1498,10 @@ MonoBehaviour:
     damage: 0
     speed: 0
     accuracy: 0
+    sprite: {fileID: 0}
+    slug: 
   healthBar: {fileID: 1187851881}
+  weaponeImage: {fileID: 645861514}
 --- !u!4 &1051303720
 Transform:
   m_ObjectHideFlags: 0
@@ -2765,6 +2768,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11475196, guid: c322f9eadd0af8b4c83ef9dac71146f5, type: 2}
+      propertyPath: weaponeImage
+      value: 
+      objectReference: {fileID: 1460364149}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c322f9eadd0af8b4c83ef9dac71146f5, type: 2}
   m_IsPrefabParent: 0

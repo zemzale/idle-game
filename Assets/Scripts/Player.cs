@@ -21,7 +21,12 @@ public class Player : MonoBehaviour {
    
     //and healthbar ref.
     [SerializeField]
-    protected RectTransform healthBar;
+    private RectTransform healthBar;
+
+    //Weapone image ref.
+    [SerializeField]
+    private Image weaponeImage;
+
 
 
 
@@ -128,7 +133,7 @@ public class Player : MonoBehaviour {
     public void EquipWeapon(int _id)
     {
         weapon = database.FetchWeaponByID(_id);
-
+        weaponeImage.sprite = weapon.sprite;
     }
 
     //and same shit for armor

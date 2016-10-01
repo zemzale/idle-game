@@ -58,7 +58,10 @@ public class WeaponDatabase : MonoBehaviour {
         {
             for (int i = 0; i < weaponData.Count; i++)
             {
-                weaponDatabes.Add(new Weapon((int)weaponData[i]["id"], weaponData[i]["title"].ToString(), (int)weaponData[i]["damage"], (int)weaponData[i]["speed"], (int)weaponData[i]["accuracy"]));
+                weaponDatabes.Add(new Weapon((int)weaponData[i]["id"], weaponData[i]["title"].ToString(), 
+                    (int)weaponData[i]["damage"], (int)weaponData[i]["speed"], (int)weaponData[i]["accuracy"],
+                    weaponData[i]["slug"].ToString()
+                    ));
             }
             DatabaseManager.singelton.OnWeaponDatabaseReady();
         }
