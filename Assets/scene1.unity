@@ -244,9 +244,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 154362835}
+  - 114: {fileID: 154362832}
   - 114: {fileID: 154362834}
   - 114: {fileID: 154362833}
-  - 114: {fileID: 154362832}
+  - 114: {fileID: 154362836}
+  - 114: {fileID: 154362837}
   m_Layer: 0
   m_Name: Database
   m_TagString: Untagged
@@ -265,6 +267,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133471861b5963d4396344c9767db117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armorDatabaseReady: 0
+  weaponDatabaseReady: 0
+  enemyDatabaseReady: 0
+  playerDatabaseReady: 0
   characters:
   - {fileID: 1405341325}
   - {fileID: 1051303719}
@@ -303,6 +309,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &154362836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154362831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ea6db4a2ef1004eab339b0bb446c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDatabase: []
+--- !u!114 &154362837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154362831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c08b967cc65618458daa16e2448f550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDatabase: []
 --- !u!1 &165758904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,6 +1507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ea6b9372c86e84497155c1ddfb4f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugName: Dummy
+  isPlayer: 0
   stats:
     modHealth: 1
     modDefense: 1
@@ -2784,6 +2816,14 @@ Prefab:
       propertyPath: weaponeImage
       value: 
       objectReference: {fileID: 1460364149}
+    - target: {fileID: 11475196, guid: c322f9eadd0af8b4c83ef9dac71146f5, type: 2}
+      propertyPath: debugName
+      value: Warior
+      objectReference: {fileID: 0}
+    - target: {fileID: 11475196, guid: c322f9eadd0af8b4c83ef9dac71146f5, type: 2}
+      propertyPath: isPlayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c322f9eadd0af8b4c83ef9dac71146f5, type: 2}
   m_IsPrefabParent: 0

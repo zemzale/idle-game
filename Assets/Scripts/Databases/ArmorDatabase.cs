@@ -21,7 +21,7 @@ public class ArmorDatabase : MonoBehaviour {
 #if UNITY_EDITOR    //If compileing for editor.
         armorData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/StreamingAssets/Armor.json"));
         PopulateArmorDatabase();
-        DatabaseManager.singelton.OnArmorDatabaseReady();
+        DatabaseManager.singelton.OnDatabaseReady(DatabaseManager.singelton.armorDatabaseReady = true);
 #elif UNITY_ANDROID //If compileing for Android.
         string armorPath = Application.streamingAssetsPath + "/Armor.json";
         StartCoroutine(GetJsonDataArmor(armorPath));
@@ -57,7 +57,7 @@ public class ArmorDatabase : MonoBehaviour {
             {
                 armorDatabase.Add(new Armor((int)armorData[i]["id"], armorData[i]["title"].ToString(), (int)armorData[i]["defense"], (int)armorData[i]["bonusHP"], (int)armorData[i]["dexterity"]));
             }
-            DatabaseManager.singelton.OnArmorDatabaseReady();
+            DatabaseManager.singelton.OnDatabaseReady(DatabaseManager.singelton.armorDatabaseReady = true);
         }
         else
         {

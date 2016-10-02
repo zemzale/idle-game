@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterUI))]
 public class Character : MonoBehaviour {
+
+    public string debugName;
+
+    [SerializeField]
+    private bool isPlayer;
 
     //ref to stat class
     public CharacterStats stats;
@@ -26,6 +30,7 @@ public class Character : MonoBehaviour {
        
     void Start()
     {
+        SetStats();
         ui = GetComponent<CharacterUI>();
         database = DatabaseManager.singelton;
         //u want wep. dis should changed to number that is linked to ur player acc or smth.
@@ -36,14 +41,21 @@ public class Character : MonoBehaviour {
 
         //Dis too should change later.
         currentHealth = stats.Health + armor.bonusHP;
-        
+    }
+
+    private void SetStats()
+    {
+        if (isPlayer)
+            stats = DatabaseManager.singelton.FetchPlayerStatsByName(debugName);
+        else
+            stats = DatabaseManager.singelton.FetchPlayerStatsByName(debugName);
     }
 
     //later for cases if u suck and die.
-    protected void SetDefaults()
+    private void SetDefaults()
     {
         currentHealth = stats.Health;
-        isDead = true;
+        isDead = false;
     }
 
     //Called when u attack.
@@ -93,7 +105,7 @@ public class Character : MonoBehaviour {
             else
                 currentHealth -= amount;
             Debug.Log(transform.name + " took " + amount + " damage");
-            ui.SetHealthBar(currentHealth, stats.Health);
+            ui.SetHealthBar(currentHealth, stats.Health + armor.bonusHP);
 
             //Check if health lower than 0 
             if (currentHealth <= 0)

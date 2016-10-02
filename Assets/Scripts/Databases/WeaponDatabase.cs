@@ -22,7 +22,7 @@ public class WeaponDatabase : MonoBehaviour {
 #if UNITY_EDITOR      //If compileing for editor.
         weaponData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/StreamingAssets/Weapons.json"));
         PopulateWeaponDatabase();
-        DatabaseManager.singelton.OnWeaponDatabaseReady();
+        DatabaseManager.singelton.OnDatabaseReady(DatabaseManager.singelton.weaponDatabaseReady = true);
 #elif UNITY_ANDROID   //If compileing for Android.
         string weaponPath = Application.streamingAssetsPath + "/Weapons.json";
         StartCoroutine(GetJsonDataWeapon(weaponPath));
@@ -63,7 +63,7 @@ public class WeaponDatabase : MonoBehaviour {
                     weaponData[i]["slug"].ToString()
                     ));
             }
-            DatabaseManager.singelton.OnWeaponDatabaseReady();
+            DatabaseManager.singelton.OnDatabaseReady(DatabaseManager.singelton.weaponDatabaseReady = true);
         }
         else
         {

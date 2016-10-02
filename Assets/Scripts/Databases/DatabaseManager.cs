@@ -11,6 +11,8 @@
  //Makes sure that object has these database scripts.
 [RequireComponent(typeof(ArmorDatabase))]
 [RequireComponent(typeof(WeaponDatabase))]
+[RequireComponent(typeof(EnemyDatabase))]
+[RequireComponent(typeof(PlayerDatabase))]
 public class DatabaseManager : MonoBehaviour {
 
     //Singelton so can be accessed without refrence.
@@ -19,9 +21,14 @@ public class DatabaseManager : MonoBehaviour {
     //Database refrences
     private ArmorDatabase armorDatabase;
     private WeaponDatabase weaponDatabase;
+    private EnemyDatabase enemyDatabase;
+    private PlayerDatabase playerDatabase;
 
-    private bool armorReady = false;
-    private bool weaponReady = false;
+    public bool armorDatabaseReady = false;
+    public bool weaponDatabaseReady = false;
+    public bool enemyDatabaseReady = false;
+    public bool playerDatabaseReady = false;
+
 
     //Player array to enable after setup.
     [SerializeField]
@@ -34,6 +41,8 @@ public class DatabaseManager : MonoBehaviour {
         //Geting ze components
         armorDatabase = gameObject.GetComponent<ArmorDatabase>();
         weaponDatabase = gameObject.GetComponent<WeaponDatabase>();
+        enemyDatabase = gameObject.GetComponent<EnemyDatabase>();
+        playerDatabase = gameObject.GetComponent<PlayerDatabase>();
     }
 
     public Armor FetchArmorByID(int id)
@@ -53,24 +62,38 @@ public class DatabaseManager : MonoBehaviour {
         else
             return null;
     }
+    
+    public CharacterStats FetchEnemyStatsByName(string name)
+    {
+        CharacterStats item = enemyDatabase.FetchStatsByName(name);
+        if (item != null)
+            return item;
+        else
+            return null;
+    }
+
+    public CharacterStats FetchPlayerStatsByName(string name)
+    {
+        CharacterStats item = playerDatabase.FetchStatsByName(name);
+        if (item != null)
+            return item;
+        else
+            return null;
+    }
 
 
     //Hook for when database is ready
-    public void OnWeaponDatabaseReady ()
+    public void OnDatabaseReady(bool database)
     {
-        weaponReady = true;
+        database = true;
         EnablePlayers();
     }
-    public void OnArmorDatabaseReady()
-    {
-        armorReady = true;
-        EnablePlayers();
-    }
+    
 
     //Makes sure that databases are ready and then enables players.
     private void EnablePlayers()
     {
-        if (armorReady & weaponReady)
+        if (armorDatabaseReady & weaponDatabaseReady & enemyDatabaseReady)
         {
             foreach (Character player in characters)
             {
