@@ -26,21 +26,21 @@ public class GameManager : MonoBehaviour {
 
     void Update ()
     {
-        //if (player.stats !=  null && enemy.stats != null && player.weapon != null && enemy.weapon != null)
-        //{
-            //do ze attaks. preaty simple.
-            if (playerTimeToAttack < Time.time )
-            {
-                playerTimeToAttack = Time.time + 1 / (player.stats.AttackSpeed + player.weapon.speed) * player.stats.modAttackSpeed;
-                player.Attack(enemy);
-            }
 
-            if (enemyTimeToAttcak < Time.time)
-            {
-                enemyTimeToAttcak = Time.time + 1 / (enemy.stats.AttackSpeed + enemy.weapon.speed) * enemy.stats.modAttackSpeed;
-                enemy.Attack(player);
-            }
+        //do ze attaks. preaty simple.
+        if (playerTimeToAttack < Time.time)
+        {
+            playerTimeToAttack = Time.time + 1 / (player.stats.AttackSpeed + player.weapon.speed) * player.stats.modAttackSpeed;
+            player.Attack(enemy);
+        }
 
-        //}
+        if (enemyTimeToAttcak < Time.time)
+        {
+            enemyTimeToAttcak = Time.time + 1 / (enemy.stats.AttackSpeed + enemy.weapon.speed) * enemy.stats.modAttackSpeed;
+            enemy.Attack(player);
+        }
     }
+
+
+
 }

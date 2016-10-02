@@ -1,7 +1,7 @@
 ﻿
 
 [System.Serializable]
-public class PlayerStats {
+public class CharacterStats {
 
     //Defaults are hardcoded. Everything eles is done through modifiers.
 
@@ -52,5 +52,4 @@ public class PlayerStats {
     public int Level;
     public int XP;
 
-   
 }

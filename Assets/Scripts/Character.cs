@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(CharacterUI))]
 public class Character : MonoBehaviour {
 
     //ref to stat class
-    public PlayerStats stats;
+    public CharacterStats stats;
     //Geter so it returns only 0 or more.
     [SerializeField]
     private int currentHealth;
@@ -19,18 +20,13 @@ public class Character : MonoBehaviour {
     [SerializeField]
     private Armor armor;
     public Weapon weapon;
-   
-    //and healthbar ref.
-    [SerializeField]
-    private RectTransform healthBar;
 
-    //Weapone image ref.
-    [SerializeField]
-    private Image weaponeImage;
-
-
+    //GUI
+    private CharacterUI ui;
+       
     void Start()
     {
+        ui = GetComponent<CharacterUI>();
         database = DatabaseManager.singelton;
         //u want wep. dis should changed to number that is linked to ur player acc or smth.
 
@@ -41,11 +37,6 @@ public class Character : MonoBehaviour {
         //Dis too should change later.
         currentHealth = stats.Health + armor.bonusHP;
         
-        //if no healthbar u done goof. addd in inspector knub.
-        if (healthBar == null)
-        {
-            Debug.LogError("No health bar!");
-        }
     }
 
     //later for cases if u suck and die.
@@ -71,7 +62,6 @@ public class Character : MonoBehaviour {
             else
             {
                 Debug.Log(transform.name + " missed!");
-
             }
         }
         
@@ -103,7 +93,7 @@ public class Character : MonoBehaviour {
             else
                 currentHealth -= amount;
             Debug.Log(transform.name + " took " + amount + " damage");
-            SetHealthBar();
+            ui.SetHealthBar(currentHealth, stats.Health);
 
             //Check if health lower than 0 
             if (currentHealth <= 0)
@@ -121,28 +111,13 @@ public class Character : MonoBehaviour {
         isDead = true;
     }
 
-
-    //GUI
-
-    //Sets healthbar size.
-    private void SetHealthBar()
-    {
-        //Returns health in %%%%%%%%%%%%%% 
-        float barScale = ((currentHealth * 100) / stats.Health) * 0.01f;
-        if (barScale < 0)
-            barScale = 0;
-
-        healthBar.localScale = new Vector3(barScale, healthBar.localScale.y);
-    }
-
-
     //equips weapon how u can see.
     //iff want some effects and gui updates when change wep. 
     //dat goes here.
     public void EquipWeapon(int _id)
     {
         weapon = database.FetchWeaponByID(_id);
-        weaponeImage.sprite = weapon.sprite;
+        ui.SetWeaponImage(weapon.sprite);
     }
 
     //and same shit for armor

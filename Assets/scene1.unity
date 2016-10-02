@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133471861b5963d4396344c9767db117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
+  characters:
   - {fileID: 1405341325}
   - {fileID: 1051303719}
 --- !u!114 &154362833
@@ -1458,6 +1458,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1051303720}
   - 114: {fileID: 1051303719}
+  - 114: {fileID: 1051303721}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1500,8 +1501,6 @@ MonoBehaviour:
     accuracy: 0
     sprite: {fileID: 0}
     slug: 
-  healthBar: {fileID: 1187851881}
-  weaponeImage: {fileID: 645861514}
 --- !u!4 &1051303720
 Transform:
   m_ObjectHideFlags: 0
@@ -1515,6 +1514,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &1051303721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1051303718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84d27c9df470e44e8d73ee12899af2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 1187851881}
+  weaponeImage: {fileID: 645861514}
 --- !u!1 &1148944825
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,11 +2242,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1405341324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b01353f7fb56ea44b54df6adbae5d98, type: 3}
+  m_Script: {fileID: 11500000, guid: e84d27c9df470e44e8d73ee12899af2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t: {fileID: 1264005709}
-  p: {fileID: 1405341324}
+  healthBar: {fileID: 1915352863}
+  weaponeImage: {fileID: 1460364149}
 --- !u!1 &1435914158
 GameObject:
   m_ObjectHideFlags: 0
