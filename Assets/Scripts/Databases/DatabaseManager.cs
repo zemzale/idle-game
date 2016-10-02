@@ -25,7 +25,7 @@ public class DatabaseManager : MonoBehaviour {
 
     //Player array to enable after setup.
     [SerializeField]
-    private Player[] players;
+    private Character[] characters;
 
     //Awake is called as the 1st method. Google Unity script execution order for more.
     void Awake ()
@@ -72,7 +72,7 @@ public class DatabaseManager : MonoBehaviour {
     {
         if (armorReady & weaponReady)
         {
-            foreach (Player player in players)
+            foreach (Character player in characters)
             {
                 player.enabled = true;
             }

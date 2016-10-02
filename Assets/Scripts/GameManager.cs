@@ -4,21 +4,19 @@ public class GameManager : MonoBehaviour {
 
     //ref to player and enemy. might need to change name of class player
     //cuz makes no sense. lul.
-    private Player player;
-    private Player enemy;
-
-    
+    private Character player;
+    private Character enemy;
 
     void Start ()
     {
         //if null u done goof. check inspector.
         if (player == null)
         {
-            player = GameObject.Find("Player").GetComponent<Player>();            
+            player = GameObject.Find("Player").GetComponent<Character>();            
         }
         if (enemy == null)
         {
-            enemy = GameObject.Find("Enemy").GetComponent<Player>();
+            enemy = GameObject.Find("Enemy").GetComponent<Character>();
         }
     }
 

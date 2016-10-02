@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour {
+public class Character : MonoBehaviour {
 
     //ref to stat class
     public PlayerStats stats;
+    //Geter so it returns only 0 or more.
     [SerializeField]
-    protected int currentHealth;
+    private int currentHealth;
 
     //If u dead then tru else fals. U know how dis goes.
     protected bool isDead = false;
@@ -26,8 +27,6 @@ public class Player : MonoBehaviour {
     //Weapone image ref.
     [SerializeField]
     private Image weaponeImage;
-
-
 
 
     void Start()
@@ -57,18 +56,23 @@ public class Player : MonoBehaviour {
     }
 
     //Called when u attack.
-    public void Attack(Player obj)
+    public void Attack(Character obj)
     {
-        float chance = 100 - ((0.1f * stats.Dexterity) + armor.dexterity) - Random.Range(0f, 10f) + ((0.1f * stats.Accuracy) + weapon.accuracy);
-        Debug.Log("Chance to hit : "  +  chance);
+        //Dont attack if dead.lul
+        if (!isDead)
+        {
+            float chance = 100 - ((0.1f * stats.Dexterity) + armor.dexterity) - Random.Range(0f, 10f) + ((0.1f * stats.Accuracy) + weapon.accuracy);
+            Debug.Log("Chance to hit : " + chance);
 
-        if (chance >  100)
-        {
-            obj.TakeDamage(DoDamage());
-        }
-        else
-        {
-            Debug.Log(transform.name + " missed!");
+            if (chance > 100)
+            {
+                obj.TakeDamage(DoDamage());
+            }
+            else
+            {
+                Debug.Log(transform.name + " missed!");
+
+            }
         }
         
     }
@@ -90,9 +94,14 @@ public class Player : MonoBehaviour {
         if (!isDead)
         {
             Debug.Log(transform.name + " took " + amount + " damage befor armor applied.");
-            float armorNum  =  armor.defense * 0.75f * stats.modDefense;
-            amount -= (int)armorNum;
-            currentHealth -= amount;
+            float armroValue  =  armor.defense * 0.75f * stats.modDefense;
+            amount -= (int)armroValue;
+
+            //Check so its not lower than 0
+            if (currentHealth < amount)
+                currentHealth = 0;
+            else
+                currentHealth -= amount;
             Debug.Log(transform.name + " took " + amount + " damage");
             SetHealthBar();
 
