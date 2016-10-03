@@ -344,7 +344,7 @@ GameObject:
   - 222: {fileID: 165758907}
   - 114: {fileID: 165758906}
   m_Layer: 5
-  m_Name: Bar
+  m_Name: XpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -363,11 +363,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 495295277}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -10, y: -10}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 0}
+  m_SizeDelta: {x: 530, y: 26}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &165758906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1557,6 +1557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1187851881}
   weaponeImage: {fileID: 645861514}
+  xpBar: {fileID: 165758905}
 --- !u!1 &1148944825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,7 +1680,7 @@ GameObject:
   - 222: {fileID: 1187851883}
   - 114: {fileID: 1187851882}
   m_Layer: 5
-  m_Name: Bar
+  m_Name: EnemyBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2277,6 +2278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1915352863}
   weaponeImage: {fileID: 1460364149}
+  xpBar: {fileID: 165758905}
 --- !u!1 &1435914158
 GameObject:
   m_ObjectHideFlags: 0
@@ -2836,7 +2838,7 @@ GameObject:
   - 222: {fileID: 1915352865}
   - 114: {fileID: 1915352864}
   m_Layer: 5
-  m_Name: Bar
+  m_Name: PlayerBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

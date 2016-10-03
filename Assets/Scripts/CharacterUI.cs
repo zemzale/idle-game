@@ -11,6 +11,11 @@ public class CharacterUI : MonoBehaviour {
     [SerializeField]
     private Image weaponeImage;
 
+    [SerializeField]
+    private RectTransform xpBar;
+    [SerializeField]
+    private Text xpText;
+
 
     void Start ()
     {
@@ -21,6 +26,10 @@ public class CharacterUI : MonoBehaviour {
         if (weaponeImage == null)
         {
             Debug.LogWarning(transform.name + " : Weapon image is not set in inspector! ");
+        }
+        if (xpBar == null)
+        {
+            Debug.LogWarning(transform.name + " : Xp bar is not set in inspector! ");
         }
     }
 
@@ -33,6 +42,17 @@ public class CharacterUI : MonoBehaviour {
             barScale = 0;
 
         healthBar.localScale = new Vector3(barScale, healthBar.localScale.y);
+    }
+
+    public void SetXpBar(int currentXp, int maxXp)
+    {
+        //Returns health in %%%%%%%%%%%%%% 
+        float barScale = ((currentXp * 100) / maxXp) * 0.01f;
+        if (barScale < 0)
+            barScale = 0;
+
+        xpBar.localScale = new Vector3(barScale, healthBar.localScale.y);
+        xpText.text = string.Format("XP {0} / {1} ", currentXp, maxXp);
     }
 
     public void SetWeaponImage (Sprite img)
