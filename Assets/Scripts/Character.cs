@@ -27,6 +27,9 @@ public class Character : MonoBehaviour {
 
     //GUI
     private CharacterUI ui;
+
+    [SerializeField]
+    private Transform playerXpHolder;
        
     void Start()
     {
@@ -38,15 +41,23 @@ public class Character : MonoBehaviour {
         EquipWeapon(1);
         EquipArmor(1);
 
-
         //Dis too should change later.
         currentHealth = stats.Health + armor.bonusHP;
+
+        if (isPlayer)
+        {
+            
+        }
     }
 
+    //Set player stats
     private void SetStats()
     {
         if (isPlayer)
+        {
             stats = DatabaseManager.singelton.FetchPlayerStatsByName(debugName);
+            playerXpHolder = GameObject.Find("PlayerXp").transform;
+        }
         else
             stats = DatabaseManager.singelton.FetchPlayerStatsByName(debugName);
     }
@@ -64,7 +75,7 @@ public class Character : MonoBehaviour {
         //Dont attack if dead.lul
         if (!isDead)
         {
-            float chance = 100 - ((0.1f * stats.Dexterity) + armor.dexterity) - Random.Range(0f, 10f) + ((0.1f * stats.Accuracy) + weapon.accuracy);
+            float chance = 100 - ((0.1f * obj.stats.Dexterity) + obj.armor.dexterity) - Random.Range(0f, 10f) + ((0.1f * stats.Accuracy) + weapon.accuracy);
             Debug.Log("Chance to hit : " + chance);
 
             if (chance > 100)
