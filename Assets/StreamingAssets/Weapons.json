@@ -1,17 +1,17 @@
 [{
 	"id": 0,
 	"title": "Sword",
-	"damage": 100,
-	"speed": 10,
-	"accuracy": 10,
-	"slug": "mace"
+	"damage": 300,
+	"speed": 2,
+	"accuracy": 20,
+	"slug": "wep_wood_swd06"
 }, {
 	"id": 1,
-	"title": "Axe",
+	"title": "Club",
 	"damage": 200,
 	"speed": 5,
 	"accuracy": 15,
-	"slug": "mace"
+	"slug": "wep_wood_club"
 }, {
 	"id": 2,
 	"title": "Hammer",
