@@ -42,7 +42,7 @@ public class WeaponDatabase : MonoBehaviour {
         }
         else
         {
-            string jsonString = System.Text.Encoding.UTF8.GetString(www.bytes, 3, www.bytes.Length - 3);
+            string jsonString = www.text;
 
             Debug.Log("Mapping JSON to weaponData object!");
             weaponData = JsonMapper.ToObject(jsonString);

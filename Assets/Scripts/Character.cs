@@ -28,8 +28,6 @@ public class Character : MonoBehaviour {
     //GUI
     private CharacterUI ui;
 
-
-
     void Start()
     {
         
