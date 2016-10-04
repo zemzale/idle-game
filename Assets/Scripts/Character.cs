@@ -48,12 +48,20 @@ public class Character : MonoBehaviour {
     {
         if (isPlayer)
         {
-            stats.AddXp(200);
             stats = DatabaseManager.singelton.FetchPlayerStatsByName(debugName);
             ui.SetXpBar(stats.XP, stats.MaxXp);
         }
         else
-            stats = DatabaseManager.singelton.FetchPlayerStatsByName(debugName);
+        {
+            if (LevelManager.singelton != null)
+            {
+                stats = DatabaseManager.singelton.FetchPlayerStatsByName(LevelManager.singelton.NextEnemy());
+            }
+            else
+            {
+                stats = DatabaseManager.singelton.FetchPlayerStatsByName("Smarty");
+            }
+        }        
     }
 
     //equips weapon how u can see.
@@ -157,7 +165,12 @@ public class Character : MonoBehaviour {
         if (!isPlayer)
         {
             //TODO: Instead of debugName use some lvl manager.
-            stats = DatabaseManager.singelton.FetchEnemyStatsByName(debugName);
+            if (LevelManager.singelton == null)
+            {
+                Debug.LogError("No level manager!");
+                return;
+            }
+            stats = DatabaseManager.singelton.FetchEnemyStatsByName(LevelManager.singelton.NextEnemy());
         }
 
         SetDefaults();

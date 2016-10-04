@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(LevelManager))]
 public class GameManager : MonoBehaviour {
 
     public static GameManager singelton;
+
+    private LevelManager levelManager;
 
     //ref to player and enemy. might need to change name of class player
     //cuz makes no sense. lul.
@@ -21,6 +24,8 @@ public class GameManager : MonoBehaviour {
         {
             enemy = GameObject.Find("Enemy").GetComponent<Character>();
         }
+
+        levelManager = GetComponent<LevelManager>();
     }
 
     public Character GetPlayer ()

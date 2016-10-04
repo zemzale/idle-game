@@ -94,7 +94,12 @@ public class CharacterStats {
     private void LevelUp ()
     {
         lvl++;
-        maxXp += maxXp / 10;
+        if (lvl <= 5)
+        {
+            maxXp *= 2;
+        }
+        else
+            maxXp += maxXp / 2;
         xp = 0;
     }
 
