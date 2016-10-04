@@ -16,6 +16,8 @@ public class LevelManager : MonoBehaviour {
 
     public string NextEnemy()
     {
+        if (currentIndx == trainingStage.Length - 1)
+            currentIndx = 0;
         Debug.Log("Feeding Next enemy!");
         currentIndx++;
         return trainingStage[currentIndx - 1];

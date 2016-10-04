@@ -1109,7 +1109,7 @@ GameObject:
   - 222: {fileID: 686439923}
   - 114: {fileID: 686439922}
   m_Layer: 5
-  m_Name: LevelText
+  m_Name: PlayerLevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1577,6 +1577,7 @@ MonoBehaviour:
   weaponeImage: {fileID: 645861514}
   xpBar: {fileID: 165758905}
   xpText: {fileID: 436978343}
+  lvlText: {fileID: 1954534141}
 --- !u!1 &1148944825
 GameObject:
   m_ObjectHideFlags: 0
@@ -2813,6 +2814,10 @@ Prefab:
       propertyPath: xpText
       value: 
       objectReference: {fileID: 436978343}
+    - target: {fileID: 11484954, guid: c322f9eadd0af8b4c83ef9dac71146f5, type: 2}
+      propertyPath: lvlText
+      value: 
+      objectReference: {fileID: 686439922}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c322f9eadd0af8b4c83ef9dac71146f5, type: 2}
   m_IsPrefabParent: 0
@@ -2949,7 +2954,7 @@ GameObject:
   - 222: {fileID: 1954534142}
   - 114: {fileID: 1954534141}
   m_Layer: 5
-  m_Name: LevelText
+  m_Name: EnemyLevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

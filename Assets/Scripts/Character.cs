@@ -50,6 +50,7 @@ public class Character : MonoBehaviour {
         {
             stats = DatabaseManager.singelton.FetchPlayerStatsByName(debugName);
             ui.SetXpBar(stats.XP, stats.MaxXp);
+            ui.SetLevelText(stats.LVL);
         }
         else
         {
@@ -147,6 +148,7 @@ public class Character : MonoBehaviour {
     {
         Debug.Log(transform.name + " died");
         isDead = true;
+        //If is not player.
         if (!isPlayer)
         {
             //TODO : should make to a callback.
@@ -154,8 +156,15 @@ public class Character : MonoBehaviour {
             obj.stats.AddXp(stats.LVL * 60);
             obj.ui.SetXpBar(obj.stats.XP, obj.stats.MaxXp);
             Debug.Log("Added 60 xp to player! Now has " +  obj.stats.XP);
-
+            obj.ui.SetLevelText(obj.stats.LVL);
             Respawn();
+        }
+        //If is player
+        else
+        {
+            Character obj = GameManager.singelton.GetPlayer();
+            obj.stats.LevelDown();
+            ui.SetLevelText(stats.LVL);
         }
     }
     

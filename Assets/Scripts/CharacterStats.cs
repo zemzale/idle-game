@@ -103,6 +103,14 @@ public class CharacterStats {
         xp = 0;
     }
 
+    public void LevelDown ()
+    {
+        if (lvl > 5)
+            lvl -= 5;
+        else
+            lvl = 1;
+    }
+
     #endregion
 
 

@@ -11,10 +11,13 @@ public class CharacterUI : MonoBehaviour {
     [SerializeField]
     private Image weaponeImage;
 
+    //Ref to lvl UI
     [SerializeField]
     private RectTransform xpBar;
     [SerializeField]
     private Text xpText;
+    [SerializeField]
+    private Text lvlText;
 
 
     void Start ()
@@ -30,6 +33,10 @@ public class CharacterUI : MonoBehaviour {
         if (xpBar == null)
         {
             Debug.LogWarning(transform.name + " : Xp bar is not set in inspector! ");
+        }
+        if (lvlText == null)
+        {
+            Debug.LogWarning(transform.name + " : Level Text is not set in inspector! ");
         }
     }
 
@@ -53,6 +60,11 @@ public class CharacterUI : MonoBehaviour {
 
         xpBar.localScale = new Vector3(barScale, healthBar.localScale.y);
         xpText.text = string.Format("XP {0} / {1} ", currentXp, maxXp);
+    }
+
+    public void SetLevelText (int lvl)
+    {
+        lvlText.text = string.Format("LVL : {0} ", lvl);
     }
 
     public void SetWeaponImage (Sprite img)
