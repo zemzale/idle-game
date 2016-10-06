@@ -109,6 +109,9 @@ public class CharacterStats {
             lvl -= 5;
         else
             lvl = 1;
+
+        xp = 0;
+        //TODO: reset maxXp. DUNT KNOW IF NEED IT ACTUALY.
     }
 
     #endregion

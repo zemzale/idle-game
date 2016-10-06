@@ -30,11 +30,11 @@ public class Character : MonoBehaviour {
 
     void Start()
     {
-        
+        //Seting up refrences.
         ui = GetComponent<CharacterUI>();
         database = DatabaseManager.singelton;
+        
         //u want wep. dis should changed to number that is linked to ur player acc or smth.
-
         EquipWeapon(1);
         EquipArmor(1);
 
@@ -153,37 +153,40 @@ public class Character : MonoBehaviour {
         if (!isPlayer)
         {
             //TODO : should make to a callback.
-            Character obj = GameManager.singelton.GetPlayer();
-            obj.stats.AddXp(stats.LVL * 60);
-            obj.ui.SetXpBar(obj.stats.XP, obj.stats.MaxXp);
-            Debug.Log("Added 60 xp to player! Now has " +  obj.stats.XP);
-            obj.ui.SetLevelText(obj.stats.LVL);
+            Character player = GameManager.singelton.GetPlayer();
+            player.stats.AddXp(stats.LVL * 60);
+            player.ui.SetXpBar(player.stats.XP, player.stats.MaxXp);
+            Debug.Log("Added 60 xp to player! Now has " +  player.stats.XP);
+            player.ui.SetLevelText(player.stats.LVL);
             Respawn();
         }
         //If is player
         else
         {
-            Character obj = GameManager.singelton.GetPlayer();
-            obj.stats.LevelDown();
+            stats.LevelDown();
             ui.SetLevelText(stats.LVL);
+            Respawn();
         }
     }
     
     private void Respawn ()
     {
         Debug.Log("Respawning!");
+        if (LevelManager.singelton == null)
+        {
+            Debug.LogError("No level manager!");
+            return;
+        }
+
         if (!isPlayer)
         {
-            //TODO: Instead of debugName use some lvl manager.
-            if (LevelManager.singelton == null)
-            {
-                Debug.LogError("No level manager!");
-                return;
-            }
             stats = DatabaseManager.singelton.FetchEnemyStatsByName(LevelManager.singelton.NextEnemy());
             ui.SetNameText(stats.Name);
         }
-
+        else
+        {
+            stats.LevelDown();
+        }
         SetDefaults();
     }
 
