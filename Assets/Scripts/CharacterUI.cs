@@ -18,6 +18,8 @@ public class CharacterUI : MonoBehaviour {
     private Text xpText;
     [SerializeField]
     private Text lvlText;
+    [SerializeField]
+    private Text nameText;
 
 
     void Start ()
@@ -37,6 +39,10 @@ public class CharacterUI : MonoBehaviour {
         if (lvlText == null)
         {
             Debug.LogWarning(transform.name + " : Level Text is not set in inspector! ");
+        }
+        if (nameText== null)
+        {
+            Debug.LogWarning(transform.name + " : Name Text is not set in inspector! ");
         }
     }
 
@@ -70,5 +76,10 @@ public class CharacterUI : MonoBehaviour {
     public void SetWeaponImage (Sprite img)
     {
         weaponeImage.sprite = img;
+    }
+
+    public void SetNameText(string name)
+    {
+        nameText.text = name;
     }
 }

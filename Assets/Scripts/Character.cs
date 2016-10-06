@@ -50,19 +50,20 @@ public class Character : MonoBehaviour {
         {
             stats = DatabaseManager.singelton.FetchPlayerStatsByName(debugName);
             ui.SetXpBar(stats.XP, stats.MaxXp);
-            ui.SetLevelText(stats.LVL);
         }
         else
         {
             if (LevelManager.singelton != null)
             {
-                stats = DatabaseManager.singelton.FetchPlayerStatsByName(LevelManager.singelton.NextEnemy());
+                stats = DatabaseManager.singelton.FetchEnemyStatsByName(LevelManager.singelton.NextEnemy());
             }
             else
             {
-                stats = DatabaseManager.singelton.FetchPlayerStatsByName("Smarty");
-            }
-        }        
+                stats = DatabaseManager.singelton.FetchEnemyStatsByName("Smarty");
+            }            
+        }
+        ui.SetLevelText(stats.LVL);
+        ui.SetNameText(stats.Name);
     }
 
     //equips weapon how u can see.
@@ -180,6 +181,7 @@ public class Character : MonoBehaviour {
                 return;
             }
             stats = DatabaseManager.singelton.FetchEnemyStatsByName(LevelManager.singelton.NextEnemy());
+            ui.SetNameText(stats.Name);
         }
 
         SetDefaults();
