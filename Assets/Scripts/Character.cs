@@ -154,7 +154,14 @@ public class Character : MonoBehaviour {
         {
             //TODO : should make to a callback.
             Character player = GameManager.singelton.GetPlayer();
+            int currentLvl = player.stats.LVL;
             player.stats.AddXp(stats.LVL * 60);
+            if (currentLvl < player.stats.LVL)
+            {
+                player.currentHealth = player.stats.Health + armor.bonusHP;
+                player.ui.SetHealthBar(player.currentHealth, player.stats.Health + armor.bonusHP);
+            }
+               
             player.ui.SetXpBar(player.stats.XP, player.stats.MaxXp);
             Debug.Log("Added 60 xp to player! Now has " +  player.stats.XP);
             player.ui.SetLevelText(player.stats.LVL);

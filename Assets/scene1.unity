@@ -251,9 +251,9 @@ MonoBehaviour:
   trainingStage:
   - Dummy
   - Dummy
-  - Smarty
-  - Warior
-  - Warior
+  - Dummy
+  - Dummy
+  - Dummy
 --- !u!1 &154362831
 GameObject:
   m_ObjectHideFlags: 0
