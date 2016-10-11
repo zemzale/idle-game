@@ -77,6 +77,7 @@ public class CharacterStats {
     public int MaxXp
     {
         get { return maxXp; }
+
     }
 
 
@@ -94,24 +95,22 @@ public class CharacterStats {
     private void LevelUp ()
     {
         lvl++;
-        if (lvl <= 5)
-        {
-            maxXp *= 2;
-        }
-        else
-            maxXp += maxXp / 2;
-        xp = 0;
+        xp = xp - maxXp;
+        maxXp *= 2;
     }
 
     public void LevelDown ()
     {
-        if (lvl > 5)
-            lvl -= 5;
-        else
-            lvl = 1;
+        int lvlCount = 5;
+        if (lvl <= 5)
+            lvlCount = lvl - 1;
 
         xp = 0;
-        //TODO: reset maxXp. DUNT KNOW IF NEED IT ACTUALY.
+        for (int i = 0; i < lvlCount; i++)
+        {
+            maxXp /= 2;
+        }
+        lvl -= lvlCount;
     }
 
     #endregion
