@@ -7,6 +7,7 @@ public class CharacterStats {
 
     private string name;
 
+    #region Normal stats
     //Dafault values
     private int defHealth = 500;
     private float defDefense = 0;
@@ -22,6 +23,7 @@ public class CharacterStats {
     public float modAttackSpeed;
     public float modAccuracy;
     public float modDexterity;
+
 
     public string Name
     {
@@ -53,10 +55,66 @@ public class CharacterStats {
     {
         get { return defDexterity * modDexterity;}
     }
+    #endregion
 
-    //Fok dis for now
-    public int Level;
-    public int XP;
+    #region level stuff
+
+    //private xp and lvl holder so it cant be set from other places.
+    private int xp = 0;
+    private int lvl = 1;
+
+    //xp needed for next level.
+    private int maxXp = 600;
+
+    public int XP
+    {
+        get { return xp; }
+    }
+    public int LVL
+    {
+        get { return lvl; }
+    }
+    public int MaxXp
+    {
+        get { return maxXp; }
+
+    }
+
+
+    public void AddXp(int amount)
+    {
+        if (amount > 0)
+            xp += amount;
+        else
+            return;
+
+        if (xp >= maxXp)
+            LevelUp();
+    }
+
+    private void LevelUp ()
+    {
+        lvl++;
+        xp = xp - maxXp;
+        maxXp *= 2;
+    }
+
+    public void LevelDown ()
+    {
+        int lvlCount = 5;
+        if (lvl <= 5)
+            lvlCount = lvl - 1;
+
+        xp = 0;
+        for (int i = 0; i < lvlCount; i++)
+        {
+            maxXp /= 2;
+        }
+        lvl -= lvlCount;
+    }
+
+    #endregion
+
 
     public CharacterStats() {
         name = "NA";
@@ -78,5 +136,7 @@ public class CharacterStats {
         modAttackSpeed = (float)_attackSpeed / 10;
         modAccuracy = (float)_accuracy / 10;
         modDexterity = (float)_dexterity / 10;
+        maxXp = 600;
+        xp = 0;
     }
 }

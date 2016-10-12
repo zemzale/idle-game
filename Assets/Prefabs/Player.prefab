@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 484316}
   - 114: {fileID: 11475196}
+  - 114: {fileID: 11484954}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -35,11 +36,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137390}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2ea6b9372c86e84497155c1ddfb4f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugName: Warior
+  isPlayer: 1
   stats:
     modHealth: 1
     modDefense: 1
@@ -47,10 +50,7 @@ MonoBehaviour:
     modAttackSpeed: 2
     modAccuracy: 1.2
     modDexterity: 1.2
-    Level: 1
-    XP: 0
   currentHealth: 0
-  database: {fileID: 0}
   armor:
     ID: 0
     name: 
@@ -63,7 +63,23 @@ MonoBehaviour:
     damage: 100
     speed: 0
     accuracy: 0
+    sprite: {fileID: 0}
+    slug: 
+--- !u!114 &11484954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84d27c9df470e44e8d73ee12899af2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
+  weaponeImage: {fileID: 0}
+  xpBar: {fileID: 0}
+  xpText: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -15,7 +15,7 @@ public class Character : MonoBehaviour {
     private int currentHealth;
 
     //If u dead then tru else fals. U know how dis goes.
-    protected bool isDead = false;
+    private bool isDead = false;
 
     //ref to database
     private DatabaseManager database;
@@ -27,44 +27,71 @@ public class Character : MonoBehaviour {
 
     //GUI
     private CharacterUI ui;
-       
+
     void Start()
     {
-        SetStats();
+        //Seting up refrences.
         ui = GetComponent<CharacterUI>();
         database = DatabaseManager.singelton;
+        
         //u want wep. dis should changed to number that is linked to ur player acc or smth.
-
         EquipWeapon(1);
         EquipArmor(1);
 
-
-        //Dis too should change later.
-        currentHealth = stats.Health + armor.bonusHP;
+        SetStats();
+        SetDefaults();
     }
 
+    #region Setup
+    //Set player stats
     private void SetStats()
     {
         if (isPlayer)
+        {
             stats = DatabaseManager.singelton.FetchPlayerStatsByName(debugName);
+            ui.SetXpBar(stats.XP, stats.MaxXp);
+        }
         else
-            stats = DatabaseManager.singelton.FetchPlayerStatsByName(debugName);
+        {
+            if (LevelManager.singelton != null)
+            {
+                stats = DatabaseManager.singelton.FetchEnemyStatsByName(LevelManager.singelton.NextEnemy());
+            }
+            else
+            {
+                stats = DatabaseManager.singelton.FetchEnemyStatsByName("Smarty");
+            }            
+        }
+        ui.SetLevelText(stats.LVL);
+        ui.SetNameText(stats.Name);
     }
 
-    //later for cases if u suck and die.
-    private void SetDefaults()
+    //equips weapon how u can see.
+    //iff want some effects and gui updates when change wep. 
+    //dat goes here.
+    public void EquipWeapon(int _id)
     {
-        currentHealth = stats.Health;
-        isDead = false;
+        weapon = database.FetchWeaponByID(_id);
+        ui.SetWeaponImage(weapon.sprite);
     }
 
+    //and same shit for armor
+    public void EquipArmor(int _id)
+    {
+        armor = database.FetchArmorByID(_id);
+
+    }
+    #endregion
+
+
+    #region Action
     //Called when u attack.
     public void Attack(Character obj)
     {
         //Dont attack if dead.lul
         if (!isDead)
         {
-            float chance = 100 - ((0.1f * stats.Dexterity) + armor.dexterity) - Random.Range(0f, 10f) + ((0.1f * stats.Accuracy) + weapon.accuracy);
+            float chance = 100 - ((0.1f * obj.stats.Dexterity) + obj.armor.dexterity) - Random.Range(0f, 10f) + ((0.1f * stats.Accuracy) + weapon.accuracy);
             Debug.Log("Chance to hit : " + chance);
 
             if (chance > 100)
@@ -115,28 +142,66 @@ public class Character : MonoBehaviour {
             }
         }
     }
-
+    #endregion
+   
     //Method for clean-up and hwatever.
     private void Die()
     {
         Debug.Log(transform.name + " died");
         isDead = true;
+        //If is not player.
+        if (!isPlayer)
+        {
+            //TODO : should make to a callback.
+            Character player = GameManager.singelton.GetPlayer();
+            int currentLvl = player.stats.LVL;
+            player.stats.AddXp(Random.Range(60, 100));
+            if (currentLvl < player.stats.LVL)
+            {
+                player.currentHealth = player.stats.Health + armor.bonusHP;
+                player.ui.SetHealthBar(player.currentHealth, player.stats.Health + armor.bonusHP);
+            }
+               
+            player.ui.SetXpBar(player.stats.XP, player.stats.MaxXp);
+            Debug.Log("Added 60 xp to player! Now has " +  player.stats.XP);
+            player.ui.SetLevelText(player.stats.LVL);
+            Respawn();
+        }
+        //If is player
+        else
+        {
+            stats.LevelDown();
+            ui.SetLevelText(stats.LVL);
+            Respawn();
+        }
     }
-
-    //equips weapon how u can see.
-    //iff want some effects and gui updates when change wep. 
-    //dat goes here.
-    public void EquipWeapon(int _id)
+    
+    private void Respawn ()
     {
-        weapon = database.FetchWeaponByID(_id);
-        ui.SetWeaponImage(weapon.sprite);
+        Debug.Log("Respawning!");
+        if (LevelManager.singelton == null)
+        {
+            Debug.LogError("No level manager!");
+            return;
+        }
+
+        if (!isPlayer)
+        {
+            stats = DatabaseManager.singelton.FetchEnemyStatsByName(LevelManager.singelton.NextEnemy());
+            ui.SetNameText(stats.Name);
+        }
+        else
+        {
+            stats.LevelDown();
+            ui.SetXpBar(stats.XP, stats.MaxXp);
+        }
+        SetDefaults();
     }
 
-    //and same shit for armor
-    public void EquipArmor(int _id)
+    //later for cases if u suck and die.
+    private void SetDefaults()
     {
-        armor = database.FetchArmorByID(_id);
-
+        currentHealth = stats.Health + armor.bonusHP;
+        isDead = false;
     }
-
 }

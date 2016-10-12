@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(LevelManager))]
 public class GameManager : MonoBehaviour {
+
+    public static GameManager singelton;
 
     //ref to player and enemy. might need to change name of class player
     //cuz makes no sense. lul.
@@ -9,6 +12,7 @@ public class GameManager : MonoBehaviour {
 
     void Start ()
     {
+        singelton = this;
         //if null u done goof. check inspector.
         if (player == null)
         {
@@ -17,6 +21,17 @@ public class GameManager : MonoBehaviour {
         if (enemy == null)
         {
             enemy = GameObject.Find("Enemy").GetComponent<Character>();
+        }
+    }
+
+    public Character GetPlayer ()
+    {
+        if (player != null)
+            return player;
+        else
+        {
+            Debug.LogError("Cant return palyer!");
+            return null;
         }
     }
 

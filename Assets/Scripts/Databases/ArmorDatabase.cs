@@ -41,7 +41,7 @@ public class ArmorDatabase : MonoBehaviour {
         }
         else
         {
-            string jsonString = System.Text.Encoding.UTF8.GetString(www.bytes, 3, www.bytes.Length - 3);
+            string jsonString = www.text;
 
             Debug.Log("Mapping JSON to armorData object!");
             armorData = JsonMapper.ToObject(jsonString);
