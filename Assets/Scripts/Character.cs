@@ -35,7 +35,7 @@ public class Character : MonoBehaviour {
         database = DatabaseManager.singelton;
         
         //u want wep. dis should changed to number that is linked to ur player acc or smth.
-        EquipWeapon(1);
+        EquipWeapon(6);
         EquipArmor(1);
 
         SetStats();
