@@ -35,7 +35,7 @@ public class Character : MonoBehaviour {
         database = DatabaseManager.singelton;
         
         //u want wep. dis should changed to number that is linked to ur player acc or smth.
-        EquipWeapon(6);
+        EquipWeapon(1);
         EquipArmor(1);
 
         SetStats();
@@ -62,6 +62,7 @@ public class Character : MonoBehaviour {
                 stats = DatabaseManager.singelton.FetchEnemyStatsByName("Smarty");
             }            
         }
+        ui.SetCharacterImage(stats.Graphic);
         ui.SetLevelText(stats.LVL);
         ui.SetNameText(stats.Name);
     }

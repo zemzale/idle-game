@@ -5,7 +5,8 @@
 	"damage": 10,
 	"attackSpeed": 10,
 	"accuracy": 10, 
-    "dexterity": 10
+    "dexterity": 10,
+	"slug":"cha_trainingdummy"
 }, {
 	"name": "Smarty",
 	"health": 11,
@@ -13,7 +14,8 @@
 	"damage": 12,
 	"attackSpeed": 20,
 	"accuracy": 5, 
-    "dexterity": 10
+    "dexterity": 10,
+	"slug":"cha_trainingdummy"
 }, {
 	"name": "Warior",
 	"health": 12,
@@ -21,5 +23,6 @@
 	"damage": 14,
 	"attackSpeed": 15,
 	"accuracy": 14, 
-    "dexterity": 10
+    "dexterity": 10,
+	"slug":"cha_trainingdummy"
 }]

@@ -1,4 +1,4 @@
-﻿
+﻿using UnityEngine;
 
 [System.Serializable]
 public class CharacterStats {
@@ -6,6 +6,8 @@ public class CharacterStats {
     //Defaults are hardcoded. Everything eles is done through modifiers.
 
     private string name;
+    private string slug;
+    private Sprite graphic;
 
     #region Normal stats
     //Dafault values
@@ -24,6 +26,11 @@ public class CharacterStats {
     public float modAccuracy;
     public float modDexterity;
 
+
+    public Sprite Graphic
+    {
+        get { return graphic; }
+    }
 
     public string Name
     {
@@ -127,9 +134,10 @@ public class CharacterStats {
     }
     
     public CharacterStats(string _name, int _health , int _defense, int _damage,
-               int _attackSpeed, int _accuracy, int _dexterity)
+               int _attackSpeed, int _accuracy, int _dexterity, string _slug)
     {
         name = _name;
+        graphic = Resources.Load<Sprite>("Sprites/Characters/" + _slug);
         modHealth = (float)_health / 10;
         modDefense = (float)_defense / 10;
         modDamage = (float)_damage / 10;

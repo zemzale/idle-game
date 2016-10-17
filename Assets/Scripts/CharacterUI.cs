@@ -3,6 +3,10 @@ using UnityEngine.UI;
 
 public class CharacterUI : MonoBehaviour {
 
+    //ref to player image.
+    [SerializeField]
+    private Image characterImage;
+
     //and healthbar ref.
     [SerializeField]
     private RectTransform healthBar;
@@ -81,5 +85,10 @@ public class CharacterUI : MonoBehaviour {
     public void SetNameText(string name)
     {
         nameText.text = name;
+    }
+
+    public void SetCharacterImage(Sprite img)
+    {
+        characterImage.sprite = img;
     }
 }
