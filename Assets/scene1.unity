@@ -3217,6 +3217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe69f6eb7492c145a0b422bd2e83b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lerpTime: 0.2
   gameWindow: {fileID: 754048984}
   settingsWindow: {fileID: 1758248702}
   settingsButton: {fileID: 873824941}
