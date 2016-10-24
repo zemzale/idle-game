@@ -248,6 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f1811127435ef4fa4adf079d49026c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   trainingStage:
   - Dummy
   - Dummy
@@ -365,6 +366,16 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 152622633}
+=======
+  stages:
+  - name: Training Stage
+    enemys:
+    - Dummy
+    - Smarty
+    - Warior
+    - Dummy
+    - Dummy
+>>>>>>> master
 --- !u!1 &154362831
 GameObject:
   m_ObjectHideFlags: 0
