@@ -81,7 +81,7 @@ public class EnemyDatabase : MonoBehaviour
                 return item;
             }
         }
-        Debug.LogError("CANT FETCH STATS BY NAME!");
+        Debug.LogError("CANT FETCH STATS BY NAME " + name );
         return null;
     }
 }

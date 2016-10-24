@@ -55,16 +55,25 @@ public class Character : MonoBehaviour {
         {
             if (LevelManager.singelton != null)
             {
-                stats = DatabaseManager.singelton.FetchEnemyStatsByName(LevelManager.singelton.NextEnemy());
+                stats = DatabaseManager.singelton.FetchEnemyStatsByName(LevelManager.singelton.GetNextEnemy());
             }
             else
             {
                 stats = DatabaseManager.singelton.FetchEnemyStatsByName("Smarty");
             }            
         }
-        ui.SetCharacterImage(stats.Graphic);
-        ui.SetLevelText(stats.LVL);
-        ui.SetNameText(stats.Name);
+        if (stats != null)
+        {
+            ui.SetCharacterImage(stats.Graphic);
+            ui.SetLevelText(stats.LVL);
+            ui.SetNameText(stats.Name);
+        }
+        else
+        {
+            Debug.LogError(this.transform.name + " has no stats!");
+            return;
+        }
+        
     }
 
     //equips weapon how u can see.
@@ -188,8 +197,17 @@ public class Character : MonoBehaviour {
 
         if (!isPlayer)
         {
-            stats = DatabaseManager.singelton.FetchEnemyStatsByName(LevelManager.singelton.NextEnemy());
-            ui.SetNameText(stats.Name);
+            stats = DatabaseManager.singelton.FetchEnemyStatsByName(LevelManager.singelton.GetNextEnemy());
+            //TODO: Add check if returns "DONE" by GetNextEnemy() cuz then everione ded. xd
+            if (stats != null)
+            {
+                ui.SetNameText(stats.Name);
+            }
+            else
+            {
+                Debug.LogError(this.transform.name + " has no stats!");
+            }
+
         }
         else
         {
@@ -202,7 +220,15 @@ public class Character : MonoBehaviour {
     //later for cases if u suck and die.
     private void SetDefaults()
     {
-        currentHealth = stats.Health + armor.bonusHP;
-        isDead = false;
+        if (stats != null)
+        {
+            currentHealth = stats.Health + armor.bonusHP;
+            isDead = false;
+        }
+        else
+        {
+            Debug.LogError(this.transform.name + " has no stats!");
+        }
+
     }
 }

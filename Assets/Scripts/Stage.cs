@@ -6,7 +6,7 @@ public class Stage
     [SerializeField]
     private string name;
     [SerializeField]
-    private string[] enemys;
+    private string[] enemies;
 
     private int currentIndx = 0;
 
@@ -23,10 +23,11 @@ public class Stage
     //Check for it and ez lyfe.
     public string NextEnemy()
     {
-        if (currentIndx <= enemys.Length - 1)
+        Debug.LogWarning("Getting enemy with indx : " + currentIndx);
+        if (currentIndx <= enemies.Length - 1)
         {
             currentIndx++;
-            return enemys[currentIndx - 1];
+            return enemies[currentIndx - 1];
         }
         else
         {

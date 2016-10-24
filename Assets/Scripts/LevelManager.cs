@@ -18,10 +18,10 @@ public class LevelManager : MonoBehaviour {
 
     private void NextStage()
     {
-        if (currentIndx > stages.Length - 1)
+        if (currentIndx == stages.Length)
         {
-            Debug.LogWarning("There is no more stages. Reseting to 1st one xd");
-            currentIndx = 0;
+            Debug.LogWarning("There is no more stages. Git fu");
+            return;
         }
         currentStage = stages[currentIndx];
         currentIndx++;
@@ -30,18 +30,27 @@ public class LevelManager : MonoBehaviour {
     //Karoča tu paņem enemy no tagadeja stage.
     //Ja tu kruts un visus nositi dabū jauno stage. 
     //And ez lyfe.
-    public string NextEnemy()
+    public string GetNextEnemy()
     {
-        string tmp = currentStage.NextEnemy();
+        string tmp = currentStage.NextEnemy();          //Saņem tmp var ar enemie nosaukumu.
         Debug.LogWarning("Geting next enemy!" + tmp);
-        if (tmp.Equals("DONE") == true)
+        if (tmp != null)
         {
-            NextStage();
-            NextEnemy();
-            return null;
+            if (tmp.Equals("DONE") == true)                 
+            {
+                NextStage();
+                string next = currentStage.NextEnemy();
+                return next; 
+            }
+            else
+                return tmp;
         }
         else
-            return tmp;
+        {
+            Debug.LogError("No more enmies! git fucked!");
+            return null;
+        }
+        
     }
 
     
