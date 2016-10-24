@@ -62,6 +62,7 @@ public class Character : MonoBehaviour {
                 stats = DatabaseManager.singelton.FetchEnemyStatsByName("Smarty");
             }            
         }
+        ui.SetCharacterImage(stats.Graphic);
         ui.SetLevelText(stats.LVL);
         ui.SetNameText(stats.Name);
     }

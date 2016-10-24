@@ -60,7 +60,7 @@ public class PlayerDatabase : MonoBehaviour
                 playerDatabase.Add(new CharacterStats(playerData[i]["name"].ToString(), (int)playerData[i]["health"],
                                             (int)playerData[i]["defense"], (int)playerData[i]["damage"],
                                             (int)playerData[i]["attackSpeed"], (int)playerData[i]["accuracy"],
-                                            (int)playerData[i]["dexterity"]));
+                                            (int)playerData[i]["dexterity"], playerData[i]["slug"].ToString()));
             }
             DatabaseManager.singelton.OnDatabaseReady(DatabaseManager.singelton.playerDatabaseReady = true);
         }

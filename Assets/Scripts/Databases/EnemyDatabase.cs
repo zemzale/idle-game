@@ -60,7 +60,7 @@ public class EnemyDatabase : MonoBehaviour
                 enemyDatabase.Add(new CharacterStats(enemyData[i]["name"].ToString(), (int)enemyData[i]["health"], 
                                             (int)enemyData[i]["defense"],(int)enemyData[i]["damage"],
                                             (int)enemyData[i]["attackSpeed"], (int)enemyData[i]["accuracy"],
-                                            (int)enemyData[i]["dexterity"]));
+                                            (int)enemyData[i]["dexterity"], enemyData[i]["slug"].ToString()));
             }
             DatabaseManager.singelton.OnDatabaseReady(DatabaseManager.singelton.enemyDatabaseReady = true);
         }

@@ -4,19 +4,61 @@
 	"damage": 300,
 	"speed": 2,
 	"accuracy": 20,
-	"slug": "wep_wood_swd06"
-}, {
+	"slug": "wep_wood_swd01"
+},{
 	"id": 1,
+	"title": "Sword",
+	"damage": 300,
+	"speed": 2,
+	"accuracy": 20,
+	"slug": "wep_wood_swd02"
+},{
+	"id": 2,
+	"title": "Sword",
+	"damage": 300,
+	"speed": 2,
+	"accuracy": 20,
+	"slug": "wep_wood_swd03"
+},{
+	"id": 3,
+	"title": "Sword",
+	"damage": 300,
+	"speed": 2,
+	"accuracy": 20,
+	"slug": "wep_wood_swd04"
+},{
+	"id": 4,
+	"title": "Sword",
+	"damage": 300,
+	"speed": 2,
+	"accuracy": 20,
+	"slug": "wep_wood_swd05"
+},{
+	"id": 5,
+	"title": "Sword",
+	"damage": 300,
+	"speed": 2,
+	"accuracy": 20,
+	"slug": "wep_wood_swd06"
+},{
+	"id": 6,
 	"title": "Club",
 	"damage": 200,
 	"speed": 5,
 	"accuracy": 15,
 	"slug": "wep_wood_club"
-}, {
-	"id": 2,
-	"title": "Hammer",
+},{
+	"id": 7,
+	"title": "Bow",
 	"damage": 300,
 	"speed": 5,
 	"accuracy": 10,
-	"slug": "mace"
+	"slug": "wep_wood_bow01"
+},{
+	"id": 8,
+	"title": "Bow",
+	"damage": 300,
+	"speed": 5,
+	"accuracy": 10,
+	"slug": "wep_wood_bow02"
 }]
