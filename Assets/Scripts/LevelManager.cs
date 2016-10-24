@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour {
 
@@ -19,7 +18,11 @@ public class LevelManager : MonoBehaviour {
 
     private void NextStage()
     {
-        //TODO: CHECK FOR OUT OF INDEX ERROR.
+        if (currentIndx > stages.Length - 1)
+        {
+            Debug.LogWarning("There is no more stages. Reseting to 1st one xd");
+            currentIndx = 0;
+        }
         currentStage = stages[currentIndx];
         currentIndx++;
     }

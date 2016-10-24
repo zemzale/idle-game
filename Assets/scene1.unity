@@ -252,16 +252,10 @@ MonoBehaviour:
   - name: Training Stage
     enemys:
     - Dummy
+    - Smarty
+    - Warior
     - Dummy
     - Dummy
-    - Dummy
-    - Dummy
-  trainingStage:
-  - Dummy
-  - Dummy
-  - Dummy
-  - Dummy
-  - Dummy
 --- !u!1 &154362831
 GameObject:
   m_ObjectHideFlags: 0
