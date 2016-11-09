@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(LevelManager))]
+[RequireComponent(typeof(SaveManager))]
 public class GameManager : MonoBehaviour {
 
     public static GameManager singelton;
@@ -10,9 +11,12 @@ public class GameManager : MonoBehaviour {
     private Character player;
     private Character enemy;
 
+    private SaveManager saveManager;
+
     void Start ()
     {
         singelton = this;
+        saveManager = GetComponent<SaveManager>();
         //if null u done goof. check inspector.
         if (player == null)
         {
@@ -54,6 +58,11 @@ public class GameManager : MonoBehaviour {
             enemyTimeToAttcak = Time.time + 1 / (enemy.stats.AttackSpeed + enemy.weapon.speed) * enemy.stats.modAttackSpeed;
             enemy.Attack(player);
         }
+    }
+
+    void OnApplicationQuit()
+    {
+        saveManager.SaveGame();
     }
 
 

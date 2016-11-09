@@ -147,4 +147,10 @@ public class CharacterStats {
         maxXp = 600;
         xp = 0;
     }
+
+    public string[] GetStatString ()
+    {
+        string[] stats = { name, Health.ToString(), Defese.ToString(), Damage.ToString(), AttackSpeed.ToString(), Accuracy.ToString(), Dexterity.ToString(), XP.ToString(), LVL.ToString() };
+        return stats;
+    }
 }
