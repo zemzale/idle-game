@@ -256,6 +256,13 @@ MonoBehaviour:
   - name: Training stage
     enemies:
     - Smarty
+  - name: Training stage
+    enemies:
+    - Smarty
+    - Smarty
+    - Smarty
+    - Smarty
+    - Smarty
 --- !u!114 &135699919
 MonoBehaviour:
   m_ObjectHideFlags: 0
