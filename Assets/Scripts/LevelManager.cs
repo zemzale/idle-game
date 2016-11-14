@@ -1,14 +1,24 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour {
 
     public static LevelManager singelton;
 
     [SerializeField]
+    private Text currentStageText;
+
+    [SerializeField]
     private Stage[] stages;
     private Stage currentStage; 
 
     private int currentIndx = 0;
+
+    public int CurrentIndx
+    {
+        get { return currentIndx; }
+        set { currentIndx = value; }
+    }
 
     void Start ()
     {
@@ -20,11 +30,18 @@ public class LevelManager : MonoBehaviour {
     {
         if (currentIndx == stages.Length)
         {
-            Debug.LogWarning("There is no more stages. Git fu");
+            //TODO: Add some endgame shit!
+            Debug.LogError("There is no more stages. Git fuked");
             return;
         }
         currentStage = stages[currentIndx];
+        SetCurrentStageText();
         currentIndx++;
+    }
+
+    private void SetCurrentStageText ()
+    {
+        currentStageText.text = (currentIndx + 1).ToString();
     }
 
     //Karoča tu paņem enemy no tagadeja stage.
@@ -33,7 +50,7 @@ public class LevelManager : MonoBehaviour {
     public string GetNextEnemy()
     {
         string tmp = currentStage.NextEnemy();          //Saņem tmp var ar enemie nosaukumu.
-        Debug.LogWarning("Geting next enemy!" + tmp);
+        Debug.Log("Geting next enemy!" + tmp);
         if (tmp != null)
         {
             if (tmp.Equals("DONE") == true)                 
@@ -53,5 +70,9 @@ public class LevelManager : MonoBehaviour {
         
     }
 
-    
+    public void ResetStage ()
+    {
+        currentStage.Reset();
+        Debug.Log("Reseting Stage!");
+    }
 }

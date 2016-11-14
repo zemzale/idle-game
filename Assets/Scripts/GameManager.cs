@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager singelton;
 
+    public static bool pause = true;
+
     //ref to player and enemy. might need to change name of class player
     //cuz makes no sense. lul.
     private Character player;
@@ -45,18 +47,20 @@ public class GameManager : MonoBehaviour {
 
     void Update ()
     {
-
-        //do ze attaks. preaty simple.
-        if (playerTimeToAttack < Time.time)
+        if (!pause)
         {
-            playerTimeToAttack = Time.time + 1 / (player.stats.AttackSpeed + player.weapon.speed) * player.stats.modAttackSpeed;
-            player.Attack(enemy);
-        }
+            //do ze attaks. preaty simple.
+            if (playerTimeToAttack < Time.time)
+            {
+                playerTimeToAttack = Time.time + 1 / (player.stats.AttackSpeed + player.weapon.speed) * player.stats.modAttackSpeed;
+                player.Attack(enemy);
+            }
 
-        if (enemyTimeToAttcak < Time.time)
-        {
-            enemyTimeToAttcak = Time.time + 1 / (enemy.stats.AttackSpeed + enemy.weapon.speed) * enemy.stats.modAttackSpeed;
-            enemy.Attack(player);
+            if (enemyTimeToAttcak < Time.time)
+            {
+                enemyTimeToAttcak = Time.time + 1 / (enemy.stats.AttackSpeed + enemy.weapon.speed) * enemy.stats.modAttackSpeed;
+                enemy.Attack(player);
+            }
         }
     }
 

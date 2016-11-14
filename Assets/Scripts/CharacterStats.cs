@@ -31,7 +31,6 @@ public class CharacterStats {
     {
         get { return graphic; }
     }
-
     public string Name
     {
         get { return name; }
@@ -49,7 +48,6 @@ public class CharacterStats {
     {
         get{ return defDamage * modDamage;}
     }
-
     public float AttackSpeed
     {
         get { return defAttackSpeed * modAttackSpeed;}
@@ -86,7 +84,6 @@ public class CharacterStats {
         get { return maxXp; }
 
     }
-
 
     public void AddXp(int amount)
     {
@@ -148,9 +145,4 @@ public class CharacterStats {
         xp = 0;
     }
 
-    public string[] GetStatString ()
-    {
-        string[] stats = { name, Health.ToString(), Defese.ToString(), Damage.ToString(), AttackSpeed.ToString(), Accuracy.ToString(), Dexterity.ToString(), XP.ToString(), LVL.ToString() };
-        return stats;
-    }
 }

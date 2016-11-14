@@ -17,13 +17,13 @@ public class Stage
             return name;
         }
     }
-
+    
     //Geting next enemy by index.
     //IF all done then send DONE
     //Check for it and ez lyfe.
     public string NextEnemy()
     {
-        Debug.LogWarning("Getting enemy with indx : " + currentIndx);
+        Debug.Log("Getting enemy with indx : " + currentIndx);
         if (currentIndx <= enemies.Length - 1)
         {
             currentIndx++;
@@ -35,9 +35,6 @@ public class Stage
         }
     }
 
-
-    //TODO: GET THIS HOOKED TO PLAYER SMH.
-    //RESTS INDEX SO EVERYTHING STARTS AGAIN.
     public void Reset()
     {
         currentIndx = 0;
