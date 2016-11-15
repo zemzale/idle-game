@@ -44,7 +44,7 @@ public class Character : MonoBehaviour {
     //Set player stats
     private void SetStats()
     {
-        //TODO: Move to so player does it as saveManager and Enemy as predefined(??)
+        //TODO: Move to check player/non-player and add predifined(???) values to enemies!
         EquipWeapon(saveManager.WeaponId);
         EquipArmor(saveManager.ArmorId);
 
@@ -119,7 +119,7 @@ public class Character : MonoBehaviour {
     //Callculates dmg and shit.
     public int DoDamage()
     {
-        //TODO: Add calculation.
+        //FIX: Add calculation.
         float dmg = weapon.damage * stats.modDamage;
 
         Debug.Log(transform.name + " attacked for " + dmg);
@@ -129,7 +129,7 @@ public class Character : MonoBehaviour {
     //Method called when takeing damage.
     public void TakeDamage(int amount)
     {
-        //TODO: Fix that there is no way of takeing negative damage!!!  
+        //FIX: Make sure that there is no way of takeing negative damage!!!  
 
         if (!isDead)
         {
@@ -162,7 +162,7 @@ public class Character : MonoBehaviour {
         //If is not player.
         if (!isPlayer)
         {
-            //TODO : should make to a callback.
+            //TIDY: should make to a callback.
 
             /*
              * Gets Player and adds xp for the kill
