@@ -51,6 +51,7 @@ public class Character : MonoBehaviour {
         if (isPlayer)
         {
             stats = DatabaseManager.singelton.FetchPlayerStatsByName(debugName);
+            stats.SetLevel(saveManager.PlayerXp, saveManager.PlayerLvl);
             SetDefaults();
             ui.SetXpBar(stats.XP, stats.MaxXp);
         }

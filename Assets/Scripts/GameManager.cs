@@ -64,11 +64,18 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+#if UNITY_EDITOR
     void OnApplicationQuit()
     {
         saveManager.SaveGame();
     }
-
+#elif UNITY_ANDROID
+    //TODO: Test if this works how its suposed. maybe can change to OnAppDestroy() thoe wouldnt be so bad.
+    void OnApplicationPause()
+    {
+        saveManager.SaveGame();
+    }
+#endif
 
 
 }

@@ -15,6 +15,7 @@ public class SaveManager : MonoBehaviour {
     private int weaponId;
     private int stageId;
     private int playerLvl;
+    private int playerXp;
 
     public int ArmorId
     {
@@ -28,6 +29,20 @@ public class SaveManager : MonoBehaviour {
         get
         {
             return weaponId;
+        }
+    }
+    public int PlayerLvl
+    {
+        get
+        {
+            return playerLvl;
+        }
+    }
+    public int PlayerXp
+    {
+        get
+        {
+            return playerXp;
         }
     }
 
@@ -55,11 +70,15 @@ public class SaveManager : MonoBehaviour {
         armorId = player.armor.ID;
         weaponId = player.weapon.ID;
         stageId = GetComponent<LevelManager>().CurrentIndx;
+        playerLvl = player.stats.LVL;
+        playerXp = player.stats.XP;
 
-        string[] toSave = { armorId.ToString(), weaponId.ToString(), stageId.ToString() };
+        string[] toSave = { armorId.ToString(), weaponId.ToString(), stageId.ToString(),
+                            playerLvl.ToString(), playerXp.ToString() };
 
         try
         {
+            Debug.Log("Write contains : " + toSave[0] + " " + toSave[1] + " " + toSave[2] + " " + toSave[4] + " ");
             File.WriteAllLines(filePath, toSave);
         }
         catch (System.Exception e)
@@ -70,22 +89,36 @@ public class SaveManager : MonoBehaviour {
 
     public void LoadGame ()
     {
-        string[] statsText = new string[3];
+        string[] statsText = new string[5];
 
-        try
+        if (System.IO.File.Exists(filePath))
         {
-            statsText = File.ReadAllLines(filePath);
+            try
+            {
+                statsText = File.ReadAllLines(filePath);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError(e);
+            }
         }
-        catch (System.Exception e)
+        else
         {
-            Debug.LogError(e);
+            armorId = 1;
+            weaponId = 1;
+            GetComponent<LevelManager>().CurrentIndx = 1;
+            playerLvl = 1;
+            playerXp = 0;
+            return;
         }
 
         armorId = Int32.Parse(statsText[0]);
         weaponId = Int32.Parse(statsText[1]);
         GetComponent<LevelManager>().CurrentIndx = Int32.Parse(statsText[2]);
+        playerLvl = Int32.Parse(statsText[3]);
+        playerXp = Int32.Parse(statsText[4]);
+
 
     }
-
 
 }

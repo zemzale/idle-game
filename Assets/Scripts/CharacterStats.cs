@@ -117,6 +117,17 @@ public class CharacterStats {
         lvl -= lvlCount;
     }
 
+    public void SetLevel (int _xp, int _lvl)
+    {
+        xp = _xp;
+        lvl = _lvl;
+
+        if (lvl != 1)
+        {
+            maxXp *= 2 * (lvl - 1);
+        }
+
+    }
     #endregion
 
 
