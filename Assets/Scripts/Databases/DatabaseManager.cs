@@ -81,7 +81,6 @@ public class DatabaseManager : MonoBehaviour {
             return null;
     }
 
-
     //Hook for when database is ready
     public void OnDatabaseReady(bool database)
     {
@@ -89,17 +88,17 @@ public class DatabaseManager : MonoBehaviour {
         EnablePlayers();
     }
     
-
     //Makes sure that databases are ready and then enables players.
     private void EnablePlayers()
     {
-        if (armorDatabaseReady & weaponDatabaseReady & enemyDatabaseReady)
+        if (armorDatabaseReady & weaponDatabaseReady & enemyDatabaseReady & playerDatabaseReady)
         {
             foreach (Character player in characters)
             {
                 player.enabled = true;
             }
             Debug.Log("Players enabled.");
+            GameManager.pause = false;
         }
     }
 }

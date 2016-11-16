@@ -3,7 +3,7 @@
 [System.Serializable]
 public class Weapon {
     
-    //TODO: Get some protection xd
+    //TIDY: Get some protection xd
     public int ID;
     public string name;
     public int damage;

@@ -31,7 +31,6 @@ public class CharacterStats {
     {
         get { return graphic; }
     }
-
     public string Name
     {
         get { return name; }
@@ -49,7 +48,6 @@ public class CharacterStats {
     {
         get{ return defDamage * modDamage;}
     }
-
     public float AttackSpeed
     {
         get { return defAttackSpeed * modAttackSpeed;}
@@ -87,7 +85,6 @@ public class CharacterStats {
 
     }
 
-
     public void AddXp(int amount)
     {
         if (amount > 0)
@@ -120,6 +117,17 @@ public class CharacterStats {
         lvl -= lvlCount;
     }
 
+    public void SetLevel (int _xp, int _lvl)
+    {
+        xp = _xp;
+        lvl = _lvl;
+
+        if (lvl != 1)
+        {
+            maxXp *= 2 * (lvl - 1);
+        }
+
+    }
     #endregion
 
 
@@ -147,4 +155,5 @@ public class CharacterStats {
         maxXp = 600;
         xp = 0;
     }
+
 }

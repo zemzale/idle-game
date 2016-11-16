@@ -18,7 +18,7 @@
 	"slug":"cha_trainingdummy"
 }, {
 	"name": "Warior",
-	"health": 12,
+	"health": 20,
 	"defense": 13,
 	"damage": 14,
 	"attackSpeed": 15,

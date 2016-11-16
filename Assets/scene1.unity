@@ -206,6 +206,7 @@ GameObject:
   - 4: {fileID: 135699917}
   - 114: {fileID: 135699916}
   - 114: {fileID: 135699918}
+  - 114: {fileID: 135699919}
   m_Layer: 0
   m_Name: GM
   m_TagString: Untagged
@@ -248,13 +249,176 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f1811127435ef4fa4adf079d49026c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentStageText: {fileID: 325958433}
   stages:
   - name: Training stage
     enemies:
     - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
   - name: Training stage
     enemies:
-    - Smarty
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+  - name: Training stage
+    enemies:
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+    - Dummy
+--- !u!114 &135699919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 135699915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c62b9f1a389ee0c418d2ca6f45086870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerGO: {fileID: 1913059260}
 --- !u!1 &152622633
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,6 +837,82 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 281044771}
+--- !u!1 &325958431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 325958432}
+  - 222: {fileID: 325958434}
+  - 114: {fileID: 325958433}
+  m_Layer: 5
+  m_Name: StageNumberText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &325958432
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 325958431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1882489709}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0.000015258789, y: 17}
+  m_SizeDelta: {x: 160, y: 34}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &325958433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 325958431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 1
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: '1
+
+'
+--- !u!222 &325958434
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 325958431}
 --- !u!1 &341405848
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,6 +1663,7 @@ RectTransform:
   - {fileID: 411772772}
   - {fileID: 807739569}
   - {fileID: 40238362}
+  - {fileID: 1882489709}
   m_Father: {fileID: 1858687344}
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2324,6 +2565,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1258084811}
+--- !u!1 &1299364004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1299364005}
+  - 222: {fileID: 1299364007}
+  - 114: {fileID: 1299364006}
+  m_Layer: 5
+  m_Name: TittleText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1299364005
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1299364004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1882489709}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 34}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1299364006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1299364004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 1
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Stage '
+--- !u!222 &1299364007
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1299364004}
 --- !u!1 &1324237690
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,12 +2862,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!114 &1405341325 stripped
+--- !u!114 &1405341325
 MonoBehaviour:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11475196, guid: c322f9eadd0af8b4c83ef9dac71146f5,
     type: 2}
   m_PrefabInternal: {fileID: 1913059259}
+  m_GameObject: {fileID: 1913059260}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2ea6b9372c86e84497155c1ddfb4f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugName: Warior
+  isPlayer: 1
+  stats:
+    modHealth: 1
+    modDefense: 1
+    modDamage: 1.2
+    modAttackSpeed: 2
+    modAccuracy: 1.2
+    modDexterity: 1.2
+  currentHealth: 0
+  armor:
+    ID: 0
+    name: 
+    defense: 0
+    bonusHP: 0
+    dexterity: 0
+  weapon:
+    ID: 0
+    name: Sword
+    damage: 100
+    speed: 0
+    accuracy: 0
+    sprite: {fileID: 0}
+    slug: 
 --- !u!1 &1435914158
 GameObject:
   m_ObjectHideFlags: 0
@@ -3125,7 +3470,7 @@ GameObject:
   - 114: {fileID: 1858687341}
   - 114: {fileID: 1858687345}
   m_Layer: 5
-  m_Name: GameCanvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3297,6 +3642,41 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1879312715}
+--- !u!1 &1882489708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1882489709}
+  m_Layer: 5
+  m_Name: StageTextHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1882489709
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1882489708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 1299364005}
+  - {fileID: 325958432}
+  m_Father: {fileID: 754048984}
+  m_RootOrder: 4
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.089645386, y: 469}
+  m_SizeDelta: {x: 600, y: 74.6}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1913059259
 Prefab:
   m_ObjectHideFlags: 0
@@ -3367,6 +3747,55 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c322f9eadd0af8b4c83ef9dac71146f5, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1913059260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 137390, guid: c322f9eadd0af8b4c83ef9dac71146f5, type: 2}
+  m_PrefabInternal: {fileID: 1913059259}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1913059262}
+  - 114: {fileID: 1405341325}
+  - 114: {fileID: 1913059261}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1913059261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11484954, guid: c322f9eadd0af8b4c83ef9dac71146f5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1913059259}
+  m_GameObject: {fileID: 1913059260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84d27c9df470e44e8d73ee12899af2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterImage: {fileID: 1546312601}
+  healthBar: {fileID: 1915352863}
+  weaponeImage: {fileID: 1460364149}
+  xpBar: {fileID: 165758905}
+  xpText: {fileID: 436978343}
+  lvlText: {fileID: 686439922}
+  nameText: {fileID: 1879312717}
+--- !u!4 &1913059262
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 484316, guid: c322f9eadd0af8b4c83ef9dac71146f5, type: 2}
+  m_PrefabInternal: {fileID: 1913059259}
+  m_GameObject: {fileID: 1913059260}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
 --- !u!1 &1915352862
 GameObject:
   m_ObjectHideFlags: 0

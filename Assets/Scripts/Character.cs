@@ -19,10 +19,10 @@ public class Character : MonoBehaviour {
 
     //ref to database
     private DatabaseManager database;
+    private SaveManager saveManager;
 
     //ref to armor and wep.
-    [SerializeField]
-    private Armor armor;
+    public Armor armor;
     public Weapon weapon;
 
     //GUI
@@ -33,66 +33,66 @@ public class Character : MonoBehaviour {
         //Seting up refrences.
         ui = GetComponent<CharacterUI>();
         database = DatabaseManager.singelton;
-        
-        //u want wep. dis should changed to number that is linked to ur player acc or smth.
-        EquipWeapon(1);
-        EquipArmor(1);
+        saveManager = SaveManager.singelton;
 
+        //Setting stats
         SetStats();
-        SetDefaults();
     }
 
     #region Setup
+    
     //Set player stats
     private void SetStats()
     {
+        //TODO: Move to check player/non-player and add predifined(???) values to enemies!
+        EquipWeapon(saveManager.WeaponId);
+        EquipArmor(saveManager.ArmorId);
+
         if (isPlayer)
         {
             stats = DatabaseManager.singelton.FetchPlayerStatsByName(debugName);
+            stats.SetLevel(saveManager.PlayerXp, saveManager.PlayerLvl);
+            SetDefaults();
             ui.SetXpBar(stats.XP, stats.MaxXp);
         }
         else
         {
             if (LevelManager.singelton != null)
-            {
                 stats = DatabaseManager.singelton.FetchEnemyStatsByName(LevelManager.singelton.GetNextEnemy());
-            }
             else
-            {
-                stats = DatabaseManager.singelton.FetchEnemyStatsByName("Smarty");
-            }            
+                Debug.LogError("No level manager found! Cant set stats for Enemy.");           
         }
+
         if (stats != null)
         {
-            ui.SetCharacterImage(stats.Graphic);
-            ui.SetLevelText(stats.LVL);
-            ui.SetNameText(stats.Name);
+            SetGUI();
         }
         else
-        {
             Debug.LogError(this.transform.name + " has no stats!");
-            return;
-        }
-        
+    }
+
+    private void SetGUI ()
+    {
+        ui.SetCharacterImage(stats.Graphic);
+        ui.SetLevelText(stats.LVL);
+        ui.SetNameText(stats.Name);
     }
 
     //equips weapon how u can see.
     //iff want some effects and gui updates when change wep. 
     //dat goes here.
-    public void EquipWeapon(int _id)
+    private void EquipWeapon(int _id)
     {
         weapon = database.FetchWeaponByID(_id);
         ui.SetWeaponImage(weapon.sprite);
     }
 
     //and same shit for armor
-    public void EquipArmor(int _id)
+    private void EquipArmor(int _id)
     {
         armor = database.FetchArmorByID(_id);
-
     }
     #endregion
-
 
     #region Action
     //Called when u attack.
@@ -120,7 +120,7 @@ public class Character : MonoBehaviour {
     //Callculates dmg and shit.
     public int DoDamage()
     {
-        //TODO: Add calculation.
+        //FIX: Add calculation.
         float dmg = weapon.damage * stats.modDamage;
 
         Debug.Log(transform.name + " attacked for " + dmg);
@@ -130,6 +130,8 @@ public class Character : MonoBehaviour {
     //Method called when takeing damage.
     public void TakeDamage(int amount)
     {
+        //FIX: Make sure that there is no way of takeing negative damage!!!  
+
         if (!isDead)
         {
             Debug.Log(transform.name + " took " + amount + " damage befor armor applied.");
@@ -152,7 +154,6 @@ public class Character : MonoBehaviour {
             }
         }
     }
-    #endregion
    
     //Method for clean-up and hwatever.
     private void Die()
@@ -162,33 +163,42 @@ public class Character : MonoBehaviour {
         //If is not player.
         if (!isPlayer)
         {
-            //TODO : should make to a callback.
+            //TIDY: should make to a callback.
+
+            /*
+             * Gets Player and adds xp for the kill
+             * if the we levelUp we reset HP and GUI update
+             * then we respawn Enemy
+             */
             Character player = GameManager.singelton.GetPlayer();
             int currentLvl = player.stats.LVL;
             player.stats.AddXp(Random.Range(60, 100));
             if (currentLvl < player.stats.LVL)
             {
-                player.currentHealth = player.stats.Health + armor.bonusHP;
-                player.ui.SetHealthBar(player.currentHealth, player.stats.Health + armor.bonusHP);
+                player.SetDefaults();
             }
                
             player.ui.SetXpBar(player.stats.XP, player.stats.MaxXp);
-            Debug.Log("Added 60 xp to player! Now has " +  player.stats.XP);
             player.ui.SetLevelText(player.stats.LVL);
             Respawn();
         }
         //If is player
         else
         {
+            /*Level doww. Update UI.
+             * Then reset stage and respawn.
+             */
             stats.LevelDown();
             ui.SetLevelText(stats.LVL);
+            ui.SetXpBar(stats.XP, stats.MaxXp);
+            LevelManager.singelton.ResetStage();
             Respawn();
         }
     }
     
     private void Respawn ()
     {
-        Debug.Log("Respawning!");
+        Debug.Log(this.name + " respawning!");
         if (LevelManager.singelton == null)
         {
             Debug.LogError("No level manager!");
@@ -197,28 +207,26 @@ public class Character : MonoBehaviour {
 
         if (!isPlayer)
         {
-            stats = DatabaseManager.singelton.FetchEnemyStatsByName(LevelManager.singelton.GetNextEnemy());
+            /*
+             * If not payer we get the next one and BOOOM
+             * We get the name of Enemy from LevelManager and it does the shit.
+            */
+            string nextEnemy = LevelManager.singelton.GetNextEnemy();
+            stats = DatabaseManager.singelton.FetchEnemyStatsByName(nextEnemy);
             //TODO: Add check if returns "DONE" by GetNextEnemy() cuz then everione ded. xd
             if (stats != null)
             {
                 ui.SetNameText(stats.Name);
             }
             else
-            {
                 Debug.LogError(this.transform.name + " has no stats!");
-            }
-
         }
-        else
-        {
-            stats.LevelDown();
-            ui.SetXpBar(stats.XP, stats.MaxXp);
-        }
+        //Player is done already in Die()
         SetDefaults();
     }
 
     //later for cases if u suck and die.
-    private void SetDefaults()
+    public void SetDefaults()
     {
         if (stats != null)
         {
@@ -226,9 +234,7 @@ public class Character : MonoBehaviour {
             isDead = false;
         }
         else
-        {
             Debug.LogError(this.transform.name + " has no stats!");
-        }
-
     }
+    #endregion
 }
